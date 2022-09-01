@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-image: linear-gradient(
+    0deg,
+    rgb(247, 247, 247) 23.8%,
+    rgb(252, 221, 221) 92%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.music-container {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px rgba(252, 169, 169, 0.6);
+  display: flex;
+  padding: 20px 30px;
+  margin: 100px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+
+.img-container::after {
+  content: " ";
+  position: absolute;
+  background: #fff;
+  width: 15px;
+  height: 15px;
+  bottom: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -120%);
+}
+
+.img-container img {
+  position: absolute;
+  width: inherit;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.action-btn {
+  background-color: #fff;
+  color: #ccc;
+  border: 0;
+  font-size: 20px;
+  padding: 10px;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.action-btn:focus {
+  outline: 0;
+}
+
+.action-btn-big {
+  color: #bbb;
+  font-size: 25px;
+}
+
+.music-info {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(100% - 40px);
+  padding: 10px 10px 10px 150px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.music-info h4 {
+  margin: 0;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.progress-container {
+  background: #fff;
+  border-radius: 5px;
+  margin: 10px 0;
+  height: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.progress {
+  background: #fe8daa;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
